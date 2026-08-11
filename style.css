@@ -2,91 +2,161 @@
     box-sizing: border-box;
 }
 
+
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     font-family: Arial, sans-serif;
 
-    background:
-        radial-gradient(circle at 20% 20%, #ffffff 1px, transparent 2px),
-        radial-gradient(circle at 70% 40%, #ffffff 1px, transparent 2px),
-        radial-gradient(circle at 40% 80%, #ffffff 1px, transparent 2px),
-        linear-gradient(135deg, #050018, #160047, #29005c);
-
-    background-size: 100px 100px, 140px 140px, 180px 180px, cover;
-
     color: white;
+
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 2px
+        ),
+        linear-gradient(
+            135deg,
+            #050018,
+            #170044,
+            #300060
+        );
+
+    background-size:
+        90px 90px,
+        150px 150px,
+        cover;
+
 }
+
 
 .game {
+
     width: 95%;
+
     max-width: 800px;
+
     margin: auto;
+
     padding: 25px 10px;
+
 }
 
+
 h1 {
+
     margin-bottom: 20px;
 
     color: #ff8de7;
 
     text-shadow:
         0 0 10px #ff00cc,
-        0 0 25px #ff00cc;
+        0 0 25px #ff00cc,
+        0 0 40px #ff00cc;
+
 }
 
+
+/* =========================
+   INFORMASI
+========================= */
+
 .info {
+
     display: flex;
+
     justify-content: space-around;
+
     gap: 10px;
 
     margin-bottom: 15px;
+
 }
 
-.info div {
+
+.info-box {
+
     flex: 1;
 
     padding: 12px;
 
     border-radius: 15px;
 
-    background: rgba(255, 255, 255, 0.12);
+    background:
+        rgba(255,255,255,0.12);
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
 
     font-weight: bold;
 
-    box-shadow: 0 0 15px rgba(255, 0, 200, 0.2);
+    box-shadow:
+        0 0 15px
+        rgba(255,0,200,0.2);
+
 }
 
-.info span {
+
+.info-box span {
+
     display: block;
 
     margin-top: 5px;
 
     color: #ffd6f8;
 
-    font-size: 22px;
+    font-size: 23px;
+
 }
 
+
+/* =========================
+   AREA GAME
+========================= */
+
 #gameArea {
+
     position: relative;
 
     width: 100%;
+
     height: 500px;
 
     overflow: hidden;
 
-    border: 3px solid #ff8de7;
+    border:
+        3px solid
+        #ff8de7;
 
     border-radius: 25px;
 
     background:
-        radial-gradient(circle, white 1px, transparent 2px),
-        radial-gradient(circle, #aaa 1px, transparent 2px),
-        linear-gradient(#03000e, #10002c);
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle,
+            #aaa 1px,
+            transparent 2px
+        ),
+        linear-gradient(
+            #03000e,
+            #10002c
+        );
 
     background-size:
         70px 70px,
@@ -96,115 +166,210 @@ h1 {
     box-shadow:
         0 0 20px #ff00cc,
         inset 0 0 30px #240052;
+
 }
 
+
+/* =========================
+   ASTRONOT
+========================= */
+
 #astronaut {
+
     position: absolute;
 
     left: 50%;
+
     bottom: 20px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     font-size: 60px;
 
     z-index: 10;
 
-    transition: left 0.08s linear;
+    user-select: none;
+
 }
+
+
+/* =========================
+   BINTANG DAN METEOR
+========================= */
 
 .star,
 .meteor {
-    position: absolute;
 
-    z-index: 5;
+    position: absolute;
 
     font-size: 35px;
 
+    z-index: 5;
+
     user-select: none;
+
 }
 
+
+/* =========================
+   PLANET
+========================= */
+
 .planet {
+
     position: absolute;
 
     opacity: 0.7;
 
     pointer-events: none;
+
 }
 
+
 .planet1 {
-    top: 40px;
+
+    top: 35px;
+
     right: 30px;
 
     font-size: 65px;
+
 }
 
+
 .planet2 {
-    top: 160px;
+
+    top: 150px;
+
     left: 25px;
 
     font-size: 35px;
+
 }
 
+
+.planet3 {
+
+    top: 270px;
+
+    right: 100px;
+
+    font-size: 30px;
+
+}
+
+
+/* =========================
+   TOMBOL
+========================= */
+
 .controls {
-    margin-top: 15px;
 
     display: flex;
 
     justify-content: center;
 
-    gap: 20px;
+    gap: 25px;
+
+    margin-top: 15px;
+
 }
 
-.controls button,
-.restart {
+
+.controls button {
+
+    width: 75px;
+
+    height: 55px;
+
     border: none;
 
     border-radius: 20px;
-
-    padding: 12px 25px;
 
     background: #ff69d9;
 
     color: white;
 
-    font-size: 20px;
+    font-size: 25px;
 
     cursor: pointer;
 
-    box-shadow: 0 0 12px rgba(255, 0, 200, 0.5);
+    box-shadow:
+        0 0 15px
+        rgba(255,0,200,0.5);
+
 }
 
-.controls button:hover,
-.restart:hover {
+
+.controls button:hover {
+
     background: #ff32c8;
+
+    transform: scale(1.05);
+
 }
 
-p {
-    color: #ddd;
-}
 
 .restart {
-    font-size: 16px;
 
     margin-top: 5px;
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #ff69d9;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
 }
+
+
+.restart:hover {
+
+    background: #ff32c8;
+
+}
+
+
+.instruction {
+
+    color: #ddd;
+
+}
+
 
 @media (max-width: 600px) {
 
     h1 {
+
         font-size: 24px;
+
     }
 
-    .info {
+    .info-box {
+
         font-size: 12px;
+
     }
 
-    .info span {
+    .info-box span {
+
         font-size: 18px;
+
     }
 
     #gameArea {
+
         height: 450px;
+
     }
+
 }
