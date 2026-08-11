@@ -1,258 +1,537 @@
-const astronaut = document.getElementById("astronaut");
-const gameArea = document.getElementById("gameArea");
+// ======================================
+// MENGAMBIL ELEMENT DARI HTML
+// ======================================
 
-const scoreText = document.getElementById("score");
-const levelText = document.getElementById("level");
-const livesText = document.getElementById("lives");
+const astronaut =
+    document.getElementById("astronaut");
 
-const leftButton = document.getElementById("leftButton");
-const rightButton = document.getElementById("rightButton");
+const gameArea =
+    document.getElementById("gameArea");
+
+const scoreText =
+    document.getElementById("score");
+
+const levelText =
+    document.getElementById("level");
+
+const livesText =
+    document.getElementById("lives");
+
+const leftButton =
+    document.getElementById("leftButton");
+
+const rightButton =
+    document.getElementById("rightButton");
+
+
+// ======================================
+// DATA GAME
+// ======================================
 
 let score = 0;
+
 let level = 1;
-let lives = 3;
+
+let lives = 5;
+
+let starsCollected = 0;
 
 let astronautX = 50;
+
 let gameRunning = true;
 
 
-// =========================
+// ======================================
+// MENAMPILKAN DATA AWAL
+// ======================================
+
+scoreText.innerText = score;
+
+levelText.innerText = level;
+
+livesText.innerText = lives;
+
+
+// ======================================
 // GERAK KE KIRI
-// =========================
+// ======================================
 
 function moveLeft() {
 
     if (!gameRunning) return;
 
-    astronautX = astronautX - 5;
+    astronautX -= 5;
 
     if (astronautX < 5) {
+
         astronautX = 5;
+
     }
 
-    astronaut.style.left = astronautX + "%";
+    astronaut.style.left =
+        astronautX + "%";
 }
 
 
-// =========================
+// ======================================
 // GERAK KE KANAN
-// =========================
+// ======================================
 
 function moveRight() {
 
     if (!gameRunning) return;
 
-    astronautX = astronautX + 5;
+    astronautX += 5;
 
     if (astronautX > 95) {
+
         astronautX = 95;
+
     }
 
-    astronaut.style.left = astronautX + "%";
+    astronaut.style.left =
+        astronautX + "%";
 }
 
 
-// =========================
+// ======================================
 // TOMBOL KIRI
-// =========================
+// ======================================
 
 leftButton.onclick = function() {
+
     moveLeft();
+
 };
 
 
-// =========================
+// ======================================
 // TOMBOL KANAN
-// =========================
+// ======================================
 
 rightButton.onclick = function() {
+
     moveRight();
+
 };
 
 
-// =========================
+// ======================================
 // KEYBOARD
-// =========================
+// ======================================
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "ArrowLeft") {
-        moveLeft();
+        if (event.key === "ArrowLeft") {
+
+            moveLeft();
+
+        }
+
+        if (event.key === "ArrowRight") {
+
+            moveRight();
+
+        }
+
     }
-
-    if (event.key === "ArrowRight") {
-        moveRight();
-    }
-
-});
+);
 
 
-// =========================
+// ======================================
 // MEMBUAT BINTANG
-// =========================
+// ======================================
 
 function createStar() {
 
     if (!gameRunning) return;
 
-    const star = document.createElement("div");
+
+    const star =
+        document.createElement("div");
+
 
     star.className = "star";
+
+
     star.innerHTML = "⭐";
 
-    star.style.left = Math.random() * 90 + "%";
-    star.style.top = "-40px";
+
+    // posisi awal bintang
+
+    star.style.left =
+        Math.random() * 90 + "%";
+
+
+    star.style.top =
+        "-40px";
+
 
     gameArea.appendChild(star);
 
+
     let position = -40;
 
-    const fall = setInterval(function() {
 
-        if (!gameRunning) {
-            clearInterval(fall);
-            star.remove();
-            return;
-        }
+    // kecepatan bintang
 
-        position += 4 + level;
+    const speed =
+        3 + level;
 
-        star.style.top = position + "px";
 
-        const starX = star.offsetLeft;
-        const starY = star.offsetTop;
+    const fall =
+        setInterval(function() {
 
-        const astronautX = astronaut.offsetLeft;
-        const astronautY = astronaut.offsetTop;
 
-        if (
-            Math.abs(starX - astronautX) < 55 &&
-            Math.abs(starY - astronautY) < 55
-        ) {
+            if (!gameRunning) {
 
-            score++;
+                clearInterval(fall);
 
-            scoreText.innerText = score;
+                star.remove();
 
-            if (score % 5 === 0) {
+                return;
 
-                level++;
-
-                levelText.innerText = level;
-
-                alert(
-                    "🎉 LEVEL " + level + "!"
-                );
             }
 
-            star.remove();
-            clearInterval(fall);
-        }
 
-        if (position > gameArea.offsetHeight) {
+            position += speed;
 
-            star.remove();
-            clearInterval(fall);
-        }
 
-    }, 30);
+            star.style.top =
+                position + "px";
+
+
+            // posisi bintang
+
+            const starX =
+                star.offsetLeft;
+
+            const starY =
+                star.offsetTop;
+
+
+            // posisi astronot
+
+            const astronautXPosition =
+                astronaut.offsetLeft;
+
+            const astronautYPosition =
+                astronaut.offsetTop;
+
+
+            // ==================================
+            // BINTANG TERTANGKAP
+            // ==================================
+
+            if (
+
+                Math.abs(
+                    starX -
+                    astronautXPosition
+                ) < 60
+
+                &&
+
+                Math.abs(
+                    starY -
+                    astronautYPosition
+                ) < 60
+
+            ) {
+
+
+                // tambah jumlah bintang
+
+                starsCollected++;
+
+
+                // setiap bintang = 10 skor
+
+                score += 10;
+
+
+                scoreText.innerText =
+                    score;
+
+
+                // ==================================
+                // NAIK LEVEL
+                // SETIAP 5 BINTANG
+                // ==================================
+
+                if (
+                    starsCollected % 5 === 0
+                ) {
+
+                    level++;
+
+                    levelText.innerText =
+                        level;
+
+
+                    alert(
+                        "🎉 LEVEL " +
+                        level +
+                        "!\n\n" +
+                        "⭐ Bintang terkumpul: " +
+                        starsCollected
+                    );
+
+                }
+
+
+                star.remove();
+
+                clearInterval(fall);
+
+            }
+
+
+            // ==================================
+            // BINTANG KELUAR DARI LAYAR
+            // ==================================
+
+            if (
+                position >
+                gameArea.offsetHeight
+            ) {
+
+                star.remove();
+
+                clearInterval(fall);
+
+            }
+
+
+        }, 30);
+
 }
 
 
-// =========================
+// ======================================
 // MEMBUAT METEOR
-// =========================
+// ======================================
 
 function createMeteor() {
 
     if (!gameRunning) return;
 
-    const meteor = document.createElement("div");
+
+    const meteor =
+        document.createElement("div");
+
 
     meteor.className = "meteor";
+
+
     meteor.innerHTML = "☄️";
 
-    meteor.style.left = Math.random() * 90 + "%";
-    meteor.style.top = "-40px";
+
+    // posisi meteor
+
+    meteor.style.left =
+        Math.random() * 90 + "%";
+
+
+    meteor.style.top =
+        "-40px";
+
 
     gameArea.appendChild(meteor);
 
+
     let position = -40;
 
-    const fall = setInterval(function() {
 
-        if (!gameRunning) {
-            clearInterval(fall);
-            meteor.remove();
-            return;
-        }
+    // meteor semakin cepat
+    // jika level semakin tinggi
 
-        position += 5 + level;
+    const speed =
+        4 + level;
 
-        meteor.style.top = position + "px";
 
-        const meteorX = meteor.offsetLeft;
-        const meteorY = meteor.offsetTop;
+    const fall =
+        setInterval(function() {
 
-        const astronautX = astronaut.offsetLeft;
-        const astronautY = astronaut.offsetTop;
 
-        if (
-            Math.abs(meteorX - astronautX) < 55 &&
-            Math.abs(meteorY - astronautY) < 55
-        ) {
+            if (!gameRunning) {
 
-            lives--;
+                clearInterval(fall);
 
-            livesText.innerText = lives;
+                meteor.remove();
 
-            meteor.remove();
-            clearInterval(fall);
+                return;
 
-            if (lives <= 0) {
-                gameOver();
             }
-        }
 
-        if (position > gameArea.offsetHeight) {
 
-            meteor.remove();
-            clearInterval(fall);
-        }
+            position += speed;
 
-    }, 30);
+
+            meteor.style.top =
+                position + "px";
+
+
+            // posisi meteor
+
+            const meteorX =
+                meteor.offsetLeft;
+
+            const meteorY =
+                meteor.offsetTop;
+
+
+            // posisi astronot
+
+            const astronautXPosition =
+                astronaut.offsetLeft;
+
+            const astronautYPosition =
+                astronaut.offsetTop;
+
+
+            // ==================================
+            // ASTRONOT TERKENA METEOR
+            // ==================================
+
+            if (
+
+                Math.abs(
+                    meteorX -
+                    astronautXPosition
+                ) < 60
+
+                &&
+
+                Math.abs(
+                    meteorY -
+                    astronautYPosition
+                ) < 60
+
+            ) {
+
+
+                // NYAWA BERKURANG 1
+
+                lives--;
+
+
+                livesText.innerText =
+                    lives;
+
+
+                meteor.remove();
+
+                clearInterval(fall);
+
+
+                // ==================================
+                // CEK GAME OVER
+                // ==================================
+
+                if (lives <= 0) {
+
+                    gameOver();
+
+                }
+
+            }
+
+
+            // ==================================
+            // METEOR KELUAR DARI LAYAR
+            // ==================================
+
+            if (
+                position >
+                gameArea.offsetHeight
+            ) {
+
+                meteor.remove();
+
+                clearInterval(fall);
+
+            }
+
+
+        }, 30);
+
 }
 
 
-// =========================
+// ======================================
 // GAME OVER
-// =========================
+// ======================================
 
 function gameOver() {
 
     gameRunning = false;
 
-    alert(
-        "💥 GAME OVER 💥\n\n" +
-        "⭐ Skor: " + score + "\n" +
-        "🎯 Level: " + level
-    );
+
+    // tunggu sebentar
+
+    setTimeout(function() {
+
+
+        alert(
+
+            "💥 GAME OVER 💥\n\n" +
+
+            "🏆 SKOR AKHIR: " +
+            score +
+
+            "\n\n" +
+
+            "🎯 LEVEL: " +
+            level +
+
+            "\n\n" +
+
+            "⭐ BINTANG: " +
+            starsCollected
+
+        );
+
+
+    }, 200);
+
 }
 
 
-// =========================
-// MULAI LAGI
-// =========================
+// ======================================
+// MULAI ULANG
+// ======================================
 
 function restartGame() {
+
     location.reload();
+
 }
 
 
-// =========================
-// JALANKAN GAME
-// =========================
+// ======================================
+// MEMUNCULKAN BINTANG
+// ======================================
 
-setInterval(createStar, 1000);
+// setiap 1 detik
 
-setInterval(createMeteor, 1500);
+setInterval(function() {
+
+    createStar();
+
+}, 1000);
+
+
+// ======================================
+// MEMUNCULKAN METEOR
+// ======================================
+
+// setiap 1,5 detik
+
+setInterval(function() {
+
+    createMeteor();
+
+}, 1500);
