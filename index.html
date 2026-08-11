@@ -2,7 +2,6 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -11,34 +10,28 @@
     <title>Astronot Adventure 🚀</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
     <div class="game">
 
-        <h1>
-            🚀 ASTRONOT ADVENTURE 🚀
-        </h1>
-
+        <h1>🚀 ASTRONOT ADVENTURE 🚀</h1>
 
         <!-- INFORMASI GAME -->
-
         <div class="info">
 
-            <div>
+            <div class="info-box">
                 ⭐ SKOR
                 <span id="score">0</span>
             </div>
 
-            <div>
+            <div class="info-box">
                 🎯 LEVEL
                 <span id="level">1</span>
             </div>
 
-            <div>
+            <div class="info-box">
                 ❤️ NYAWA
                 <span id="lives">5</span>
             </div>
@@ -47,7 +40,6 @@
 
 
         <!-- AREA GAME -->
-
         <div id="gameArea">
 
             <div class="planet planet1">
@@ -58,6 +50,10 @@
                 🌎
             </div>
 
+            <div class="planet planet3">
+                🌙
+            </div>
+
             <div id="astronaut">
                 👩‍🚀
             </div>
@@ -65,8 +61,7 @@
         </div>
 
 
-        <!-- TOMBOL GERAK -->
-
+        <!-- KONTROL -->
         <div class="controls">
 
             <button id="leftButton">
@@ -80,12 +75,12 @@
         </div>
 
 
-        <p>
-            Kumpulkan ⭐ untuk mendapatkan skor!
+        <p class="instruction">
+            ⭐ Kumpulkan bintang untuk mendapatkan skor!
         </p>
 
-        <p>
-            Hindari ☄️ agar nyawa tidak berkurang!
+        <p class="instruction">
+            ☄️ Hindari meteor agar nyawa tidak berkurang!
         </p>
 
 
