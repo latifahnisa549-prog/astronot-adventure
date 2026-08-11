@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronot Adventure 🚀</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game">
+
+        <h1>🚀 ASTRONOT ADVENTURE 🚀</h1>
+
+        <div class="info">
+            <div>⭐ SKOR <span id="score">0</span></div>
+            <div>🎯 LEVEL <span id="level">1</span></div>
+            <div>❤️ NYAWA <span id="lives">3</span></div>
+        </div>
+
+        <div id="gameArea">
+
+            <div class="planet planet1">🪐</div>
+            <div class="planet planet2">🌎</div>
+
+            <div id="astronaut">👩‍🚀</div>
+
+        </div>
+
+        <div class="controls">
+            <button id="leftButton">⬅️</button>
+            <button id="rightButton">➡️</button>
+        </div>
+
+        <p>
+            Gunakan tombol ⬅️ ➡️ atau keyboard untuk bergerak
+        </p>
+
+        <button class="restart" onclick="restartGame()">
+            🔄 MULAI LAGI
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
