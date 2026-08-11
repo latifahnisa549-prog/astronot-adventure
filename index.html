@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -10,87 +11,230 @@
     <title>Astronot Adventure 🚀</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <div class="game">
+    <!-- ========================= -->
+    <!-- MENU AWAL -->
+    <!-- ========================= -->
 
-        <h1>🚀 ASTRONOT ADVENTURE 🚀</h1>
+    <div id="startScreen" class="screen">
 
-        <!-- INFORMASI GAME -->
-        <div class="info">
+        <div class="menuBox">
 
-            <div class="info-box">
-                ⭐ SKOR
-                <span id="score">0</span>
-            </div>
-
-            <div class="info-box">
-                🎯 LEVEL
-                <span id="level">1</span>
-            </div>
-
-            <div class="info-box">
-                ❤️ NYAWA
-                <span id="lives">5</span>
-            </div>
-
-        </div>
-
-
-        <!-- AREA GAME -->
-        <div id="gameArea">
-
-            <div class="planet planet1">
-                🪐
-            </div>
-
-            <div class="planet planet2">
-                🌎
-            </div>
-
-            <div class="planet planet3">
-                🌙
-            </div>
-
-            <div id="astronaut">
+            <div class="bigAstronaut">
                 👩‍🚀
             </div>
 
-        </div>
+            <h1>
+                🚀 ASTRONOT<br>
+                ADVENTURE
+            </h1>
 
+            <p>
+                Jelajahi luar angkasa dan
+                kumpulkan bintang!
+            </p>
 
-        <!-- KONTROL -->
-        <div class="controls">
+            <div class="rules">
 
-            <button id="leftButton">
-                ⬅️
+                <div>
+                    ⭐ Kumpulkan bintang
+                </div>
+
+                <div>
+                    ☄️ Hindari meteor
+                </div>
+
+                <div>
+                    ❤️ Kamu memiliki 5 nyawa
+                </div>
+
+            </div>
+
+            <button
+                class="startButton"
+                onclick="startGame()">
+
+                🚀 MULAI GAME
+
             </button>
 
-            <button id="rightButton">
-                ➡️
-            </button>
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GAME -->
+    <!-- ========================= -->
+
+    <div
+        id="gameScreen"
+        class="gameScreen hidden">
+
+        <div class="game">
+
+            <h1>
+                🚀 ASTRONOT ADVENTURE
+            </h1>
+
+
+            <!-- INFORMASI GAME -->
+
+            <div class="info">
+
+                <div class="info-box">
+
+                    ⭐ SKOR
+
+                    <span id="score">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    🎯 LEVEL
+
+                    <span id="level">
+                        1
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    ❤️ NYAWA
+
+                    <span id="lives">
+                        5
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- AREA GAME -->
+
+            <div id="gameArea">
+
+                <div class="planet planet1">
+                    🪐
+                </div>
+
+                <div class="planet planet2">
+                    🌎
+                </div>
+
+                <div class="planet planet3">
+                    🌙
+                </div>
+
+
+                <div id="astronaut">
+                    👩‍🚀
+                </div>
+
+            </div>
+
+
+            <!-- KONTROL -->
+
+            <div class="controls">
+
+                <button id="leftButton">
+                    ⬅️
+                </button>
+
+                <button id="rightButton">
+                    ➡️
+                </button>
+
+            </div>
+
+
+            <p>
+                ⭐ Kumpulkan bintang
+                untuk mendapatkan skor!
+            </p>
+
+            <p>
+                ☄️ Hindari meteor!
+            </p>
 
         </div>
 
-
-        <p class="instruction">
-            ⭐ Kumpulkan bintang untuk mendapatkan skor!
-        </p>
-
-        <p class="instruction">
-            ☄️ Hindari meteor agar nyawa tidak berkurang!
-        </p>
+    </div>
 
 
-        <button
-            class="restart"
-            onclick="restartGame()">
+    <!-- ========================= -->
+    <!-- GAME OVER -->
+    <!-- ========================= -->
 
-            🔄 MULAI LAGI
+    <div
+        id="gameOverScreen"
+        class="screen hidden">
 
-        </button>
+        <div class="menuBox">
+
+            <div class="gameOverIcon">
+                💥
+            </div>
+
+            <h1>
+                GAME OVER
+            </h1>
+
+            <p>
+                Perjalanan astronotmu
+                telah berakhir!
+            </p>
+
+
+            <div class="finalScore">
+
+                <div>
+                    🏆 SKOR AKHIR
+                    <strong id="finalScore">
+                        0
+                    </strong>
+                </div>
+
+
+                <div>
+                    🎯 LEVEL
+                    <strong id="finalLevel">
+                        1
+                    </strong>
+                </div>
+
+
+                <div>
+                    ⭐ BINTANG
+                    <strong id="finalStars">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <button
+                class="startButton"
+                onclick="restartGame()">
+
+                🔄 MAIN LAGI
+
+            </button>
+
+        </div>
 
     </div>
 
