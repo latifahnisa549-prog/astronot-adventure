@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -12,9 +13,40 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <style>
+
+        /* ========================= */
+        /* LOGO GAME */
+        /* ========================= */
+
+        .logoContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gameLogo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .gameLogo:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
     <!-- ========================= -->
     <!-- MENU AWAL -->
@@ -24,19 +56,60 @@
 
         <div class="menuBox">
 
+
+            <!-- ========================= -->
+            <!-- 3 LOGO -->
+            <!-- ========================= -->
+
+            <div class="logoContainer">
+
+                <img
+                    src="logo1.jpeg"
+                    alt="Logo 1"
+                    class="gameLogo"
+                >
+
+                <img
+                    src="logo2.jpeg"
+                    alt="Logo 2"
+                    class="gameLogo"
+                >
+
+                <img
+                    src="logo3.jpeg"
+                    alt="Logo 3"
+                    class="gameLogo"
+                >
+
+            </div>
+
+
+            <!-- ASTRONOT -->
+
             <div class="bigAstronaut">
                 👩‍🚀
             </div>
 
+
+            <!-- JUDUL GAME -->
+
             <h1>
+
                 🚀 ASTRONOT<br>
                 ADVENTURE
+
             </h1>
 
+
             <p>
+
                 Jelajahi luar angkasa dan
                 kumpulkan bintang!
+
             </p>
+
+
+            <!-- RULES -->
 
             <div class="rules">
 
@@ -54,6 +127,9 @@
 
             </div>
 
+
+            <!-- TOMBOL MULAI -->
+
             <button
                 class="startButton"
                 onclick="startGame()">
@@ -62,9 +138,11 @@
 
             </button>
 
+
         </div>
 
     </div>
+
 
 
     <!-- ========================= -->
@@ -77,24 +155,32 @@
 
         <div class="game">
 
+
             <h1>
+
                 🚀 ASTRONOT ADVENTURE
+
             </h1>
+
 
 
             <!-- INFORMASI GAME -->
 
             <div class="info">
 
+
                 <div class="info-box">
 
                     ⭐ SKOR
 
                     <span id="score">
+
                         0
+
                     </span>
 
                 </div>
+
 
 
                 <div class="info-box">
@@ -102,10 +188,13 @@
                     🎯 LEVEL
 
                     <span id="level">
+
                         1
+
                     </span>
 
                 </div>
+
 
 
                 <div class="info-box">
@@ -113,65 +202,102 @@
                     ❤️ NYAWA
 
                     <span id="lives">
+
                         5
+
                     </span>
 
                 </div>
 
+
             </div>
 
 
+
+            <!-- ========================= -->
             <!-- AREA GAME -->
+            <!-- ========================= -->
 
             <div id="gameArea">
 
+
                 <div class="planet planet1">
+
                     🪐
+
                 </div>
+
 
                 <div class="planet planet2">
+
                     🌎
+
                 </div>
 
+
                 <div class="planet planet3">
+
                     🌙
+
                 </div>
+
 
 
                 <div id="astronaut">
+
                     👩‍🚀
+
                 </div>
+
 
             </div>
 
 
+
+            <!-- ========================= -->
             <!-- KONTROL -->
+            <!-- ========================= -->
 
             <div class="controls">
 
+
                 <button id="leftButton">
+
                     ⬅️
+
                 </button>
 
+
                 <button id="rightButton">
+
                     ➡️
+
                 </button>
+
 
             </div>
 
 
-            <p>
-                ⭐ Kumpulkan bintang
-                untuk mendapatkan skor!
-            </p>
 
             <p>
-                ☄️ Hindari meteor!
+
+                ⭐ Kumpulkan bintang
+                untuk mendapatkan skor!
+
             </p>
+
+
+            <p>
+
+                ☄️ Hindari meteor!
+
+            </p>
+
 
         </div>
 
     </div>
+
 
 
     <!-- ========================= -->
@@ -182,49 +308,86 @@
         id="gameOverScreen"
         class="screen hidden">
 
+
         <div class="menuBox">
 
+
             <div class="gameOverIcon">
+
                 💥
+
             </div>
 
+
             <h1>
+
                 GAME OVER
+
             </h1>
 
+
             <p>
+
                 Perjalanan astronotmu
                 telah berakhir!
+
             </p>
 
 
+
+            <!-- ========================= -->
+            <!-- SKOR AKHIR -->
+            <!-- ========================= -->
+
             <div class="finalScore">
 
+
                 <div>
+
                     🏆 SKOR AKHIR
+
                     <strong id="finalScore">
+
                         0
+
                     </strong>
+
                 </div>
 
 
+
                 <div>
+
                     🎯 LEVEL
+
                     <strong id="finalLevel">
+
                         1
+
                     </strong>
+
                 </div>
+
 
 
                 <div>
+
                     ⭐ BINTANG
+
                     <strong id="finalStars">
+
                         0
+
                     </strong>
+
                 </div>
+
 
             </div>
 
+
+
+            <!-- MAIN LAGI -->
 
             <button
                 class="startButton"
@@ -234,13 +397,21 @@
 
             </button>
 
+
         </div>
 
     </div>
 
 
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
     <script src="script.js"></script>
+
 
 </body>
 
 </html>
+```
